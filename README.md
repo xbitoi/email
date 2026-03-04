@@ -1,20 +1,50 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Gmail Email Scheduler
 
-# Run and deploy your AI Studio app
+A full-stack application to schedule emails using Gmail API.
 
-This contains everything you need to run your app locally.
+## Features
+- Schedule multiple emails at different times.
+- Recurrence support (Daily, Weekly, Monthly).
+- Modern UI with Tailwind CSS.
+- Secure OAuth2 authentication.
 
-View your app in AI Studio: https://ai.studio/apps/3221bf68-4d01-420a-aeae-8fd06c2ccd3b
+## Local Setup
 
-## Run Locally
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd <repo-folder>
+   ```
 
-**Prerequisites:**  Node.js
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
+3. **Configure Environment Variables:**
+   Create a `.env` file in the root directory:
+   ```env
+   GOOGLE_CLIENT_ID=your_client_id
+   GOOGLE_CLIENT_SECRET=your_client_secret
+   APP_URL=http://localhost:3000
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+4. **Run the application:**
+   ```bash
+   npm run dev
+   ```
+   The app will be available at `http://localhost:3000`.
+
+## Deployment (Back4App)
+
+This project is ready for deployment on Back4App Containers using the provided `Dockerfile`.
+
+1. Push this code to a GitHub repository.
+2. Connect the repository to Back4App.
+3. Set `APP_URL` in Back4App environment variables to your assigned `.run.app` or `.b4a.run` URL.
+
+## Technologies Used
+- **Frontend:** React, Tailwind CSS, Lucide Icons, Framer Motion.
+- **Backend:** Node.js, Express, Better-SQLite3.
+- **Scheduling:** Node-Cron.
+- **API:** Google APIs (Gmail).
