@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /app
 
+# Create data directory for persistent storage and set permissions
+RUN mkdir -p /app/data && chmod 777 /app/data
+
 # Copy package files
 COPY package*.json ./
 
@@ -23,8 +26,12 @@ COPY . .
 # Build the frontend
 RUN npm run build
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Set environment variables
+ENV PORT=7860
+ENV NODE_ENV=production
+
+# Expose the port
+EXPOSE 7860
 
 # Start the application
 CMD ["npm", "start"]

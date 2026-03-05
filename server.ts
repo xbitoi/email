@@ -11,8 +11,14 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const db = new Database("scheduler.db");
+const PORT = process.env.PORT || 7860;
+
+// Use persistent storage if available (for Hugging Face Spaces)
+const dbPath = process.env.NODE_ENV === "production" && fs.existsSync("/app/data") 
+  ? "/app/data/scheduler.db" 
+  : "scheduler.db";
+
+const db = new Database(dbPath);
 
 app.use(cors());
 app.use(express.json());
@@ -374,8 +380,8 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+  app.listen(Number(PORT), "0.0.0.0", () => {
+    console.log(`Server running on http://0.0.0.0:${PORT}`);
   });
 }
 
