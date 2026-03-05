@@ -1,7 +1,7 @@
-# Use Node.js LTS
+# Use Node.js LTS version
 FROM node:20-slim
 
-# Install build dependencies for better-sqlite3
+# Install dependencies for better-sqlite3
 RUN apt-get update && apt-get install -y \
     python3 \
     make \
@@ -17,13 +17,13 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy project files
+# Copy the rest of the application
 COPY . .
 
 # Build the frontend
 RUN npm run build
 
-# Expose the port
+# Expose the port the app runs on
 EXPOSE 3000
 
 # Start the application

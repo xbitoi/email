@@ -1,5 +1,6 @@
 node_modules
 dist
-scheduler.db
-.env
 .git
+.env
+scheduler.db
+scheduler.db-journal
